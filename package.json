@@ -1,0 +1,37 @@
+{
+  "name": "bedrock-vue-credential-creator-wizard",
+  "version": "0.0.1-0",
+  "description": "Vue.js Credential Creator Wizard",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint \"**/*.{js,vue}\""
+  },
+  "peerDependencies": {
+    "bedrock-quasar": "^2.0.0",
+    "vue": "^2.6.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-vue-credential-creator-wizard"
+  },
+  "keywords": [
+    "bedrock"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-vue-credential-creator-wizard/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-vue-credential-creator-wizard",
+  "bedrock": {
+    "browserDependencies": "all"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-digitalbazaar": "^1.6.0",
+    "eslint-plugin-vue": "^5.2.2"
+  }
+}
