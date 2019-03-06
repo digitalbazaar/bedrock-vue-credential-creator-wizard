@@ -1,0 +1,65 @@
+{
+  "name": "bedrock-vue-credential-creator-wizard-test",
+  "version": "0.0.1-0",
+  "description": "Vue.js Credential Creator Wizard test",
+  "private": true,
+  "main": "index.js",
+  "less": "app.less",
+  "scripts": {
+    "start": "node --preserve-symlinks test.js",
+    "test": "node --preserve-symlinks test.js test --framework karma",
+    "postinstall": "node --preserve-symlinks test.js compile-less"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-vue-credential-creator-wizard"
+  },
+  "keywords": [
+    "bedrock"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-vue-credential-creator-wizard/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-vue-credential-creator-wizard",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "bedrock": "^1.0.0",
+    "bedrock-express": "^2.0.6",
+    "bedrock-karma": "^1.0.0",
+    "bedrock-quasar": "^1.0.0",
+    "bedrock-server": "^2.2.0",
+    "bedrock-test": "^2.0.0",
+    "bedrock-views": "^6.2.0",
+    "bedrock-vue": "^1.2.0",
+    "bedrock-vue-credential-creator-wizard": "file:..",
+    "bedrock-web": "^1.0.0",
+    "bedrock-webpack": "^2.0.0",
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.1"
+  },
+  "bedrock": {
+    "browserDependencies": [
+      "@fortawesome/fontawesome-free",
+      "bedrock-quasar",
+      "bedrock-vue",
+      "bedrock-vue-credential-creator-wizard",
+      "vue",
+      "vue-router"
+    ],
+    "manifest": {
+      "@fortawesome/fontawesome-free": {
+        "main": null,
+        "less": [
+          "less/fontawesome.less",
+          "less/regular.less",
+          "less/solid.less"
+        ]
+      }
+    }
+  }
+}
