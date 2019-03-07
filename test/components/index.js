@@ -18,15 +18,20 @@ brVue.setRootVue(async () => {
   const [
     brQuasar,
     Quasar,
-    {default: iconSet}
+    {default: iconSet},
+    {default: Vuelidate}
   ] = await Promise.all([
     import('bedrock-quasar'),
     import('quasar-framework'),
-    import('quasar-framework/icons/fontawesome')
+    import('quasar-framework/icons/fontawesome'),
+    import('vuelidate')
   ]);
 
   // replace default `br-root` with a custom one
   Vue.component('br-root', () => import('./BrRoot.vue'));
+
+  // install all Vue plugins
+  Vue.use(Vuelidate);
 
   const router = new VueRouter({
     mode: 'history',
