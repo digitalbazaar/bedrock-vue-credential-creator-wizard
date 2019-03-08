@@ -24,11 +24,6 @@ export default {
   name: 'BrCreateCredentialReview',
   components: {CredentialCard},
   props: {
-    subject: {
-      type: String,
-      default: '',
-      required: true
-    },
     schemaMap: {
       type: Object,
       default: () => ({}),
