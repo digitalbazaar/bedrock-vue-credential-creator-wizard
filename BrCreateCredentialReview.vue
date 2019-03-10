@@ -5,7 +5,7 @@
         v-for="credential in credentials"
         :key="credential.type[1]"
         class="q-my-none row">
-        <credential-card
+        <credential-card-detail
           :credential="credential"
           :schema="schemaMap[credential.type[1]]" />
       </div>
@@ -18,11 +18,11 @@
  */
 'use strict';
 
-import {CredentialCard} from 'bedrock-vue-credential-card';
+import {CredentialCardDetail} from 'bedrock-vue-credential-card';
 
 export default {
   name: 'BrCreateCredentialReview',
-  components: {CredentialCard},
+  components: {CredentialCardDetail},
   props: {
     schemaMap: {
       type: Object,
