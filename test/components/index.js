@@ -22,8 +22,8 @@ brVue.setRootVue(async () => {
     {default: Vuelidate}
   ] = await Promise.all([
     import('bedrock-quasar'),
-    import('quasar-framework'),
-    import('quasar-framework/icons/fontawesome'),
+    import('quasar'),
+    import('quasar/icon-set/fontawesome-v5'),
     import('vuelidate')
   ]);
 
@@ -43,7 +43,7 @@ brVue.setRootVue(async () => {
   });
 
   // configure quasar
-  Quasar.icons.set(iconSet);
+  Quasar.iconSet.set(iconSet);
   // await brQuasar.theme({
   //   Quasar,
   //   brand: {

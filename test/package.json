@@ -31,7 +31,7 @@
     "bedrock": "^1.0.0",
     "bedrock-express": "^2.0.6",
     "bedrock-karma": "^1.0.0",
-    "bedrock-quasar": "^1.0.0",
+    "bedrock-quasar": "digitalbazaar/bedrock-quasar#v1",
     "bedrock-server": "^2.2.0",
     "bedrock-test": "^2.0.0",
     "bedrock-views": "^6.2.0",
