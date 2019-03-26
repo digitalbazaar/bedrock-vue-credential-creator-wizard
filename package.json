@@ -7,7 +7,7 @@
     "lint": "eslint \"**/*.{js,vue}\""
   },
   "dependencies": {
-    "bedrock-quasar-form-generator": "^1.0.0",
+    "bedrock-quasar-form-generator": "github:digitalbazaar/bedrock-quasar-form-generator#quasar-v1-upgrade",
     "bedrock-vue-credential-card": "github:digitalbazaar/bedrock-vue-credential-card#quasar-v1-upgrade",
     "bedrock-vue-wizard": "github:digitalbazaar/bedrock-vue-wizard#quasar-v1-upgrade",
     "jsonata": "^1.6.4",
