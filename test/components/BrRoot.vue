@@ -10,7 +10,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    <q-layout-footer />
+    <q-footer />
   </q-layout>
 </template>
 <script>
