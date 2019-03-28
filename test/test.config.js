@@ -13,6 +13,6 @@ config.karma.suites['bedrock-vue-credential-creator-wizard'] =
 config.karma.config.webpack.resolve = {
   alias: {
     quasar$: path.resolve(
-      __dirname, 'node_modules/quasar/dist/umd/quasar.mat.umd.js')
+      __dirname, 'node_modules/quasar/dist/quasar.umd.js')
   }
 };
