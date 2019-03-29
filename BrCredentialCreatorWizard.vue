@@ -11,7 +11,7 @@
         :image="currentStep.image"
         :icon="currentStep.icon"
         :subheading="currentStep.subheading">
-        <div class="q-pb-xl fit">
+        <div class="q-pb-xl full-width">
           <br-create-credential-review
             v-if="stepIndex === lastStepIndex"
             :credentials="credentials"
