@@ -1,6 +1,6 @@
 <template>
   <q-page
-    class="column gutter-md"
+    class="column q-col-gutter-md"
     padding>
     <div class="column items-center">
       <br-credential-creator-wizard
