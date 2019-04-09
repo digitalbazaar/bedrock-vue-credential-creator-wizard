@@ -2,7 +2,7 @@
 
 ## 1.0.0 - TBD
 
-### Updated
+### Changed
 - Upgrade to bedrock-quasar version 3.0.
 
 ## 0.0.0 - 2019-xx-xx
