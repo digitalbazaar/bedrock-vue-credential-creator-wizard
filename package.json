@@ -1,6 +1,6 @@
 {
   "name": "bedrock-vue-credential-creator-wizard",
-  "version": "0.0.1-0",
+  "version": "1.0.0",
   "description": "Vue.js Credential Creator Wizard",
   "main": "index.js",
   "scripts": {
