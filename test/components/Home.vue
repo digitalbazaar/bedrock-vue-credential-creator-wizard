@@ -11,9 +11,9 @@
         :schema-map="schemaMap"
         :templates="templates"
         :welcome="welcome"
-        :setup="setup"
         @finish="finish($event)">
-        <template #setup="{currentStep, stepIndex}">
+        <template
+          #default="{currentStep, stepIndex}">
           Custom Step {{stepIndex}}
           <pre>{{currentStep}}</pre>
         </template>
@@ -35,25 +35,6 @@ export default {
   data() {
     return {
       credentials: [],
-      setup: [{
-        icon: {
-          name: 'fas fa-walking',
-          size: '65px',
-          color: 'primary'
-        },
-        heading: 'Custom Setup Heading 1',
-        subheading: 'Custom setup subheading 1',
-        name: 'Custom Setup Name 1'
-      }, {
-        icon: {
-          name: 'fas fa-walking',
-          size: '65px',
-          color: 'primary'
-        },
-        heading: 'Custom Setup Heading 2',
-        subheading: 'Custom setup subheading 2',
-        name: 'Custom Setup Name 2'
-      }],
       welcome: {
         icon: {
           name: 'fas fa-walking',
@@ -67,6 +48,26 @@ export default {
         name: 'Custom Introduction'
       },
       flow: [{
+        icon: {
+          name: 'fas fa-walking',
+          size: '65px',
+          color: 'primary'
+        },
+        heading: 'Custom Setup Heading 1',
+        subheading: 'Custom setup subheading 1',
+        name: 'Custom Setup Name 1',
+        component: 'slot'
+      }, {
+        icon: {
+          name: 'fas fa-walking',
+          size: '65px',
+          color: 'primary'
+        },
+        heading: 'Custom Setup Heading 2',
+        subheading: 'Custom setup subheading 2',
+        name: 'Custom Setup Name 2',
+        component: 'slot'
+      }, {
         icon: {
           name: 'far fa-list-alt',
           size: '65px',
