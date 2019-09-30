@@ -11,7 +11,17 @@
         :image="currentStep.image"
         :icon="currentStep.icon"
         :subheading="currentStep.subheading">
-        <div class="q-pb-xl full-width">
+        <div
+          v-if="isSetupStep"
+          class="q-pb-xl full-width">
+          <slot
+            name="setup"
+            :currentStep="currentStep"
+            :stepIndex="stepIndex" />
+        </div>
+        <div
+          v-else
+          class="q-pb-xl full-width">
           <br-create-credential-review
             v-if="stepIndex === lastStepIndex"
             :credentials="credentials"
@@ -81,32 +91,24 @@ export default {
       type: Array,
       default: () => [],
       required: true
+    },
+    welcome: {
+      type: Object,
+      default: () => undefined
+    },
+    setup: {
+      type: Object,
+      default: () => []
+    },
+    review: {
+      type: Object,
+      default: () => undefined
     }
   },
   data() {
     return {
       credentials: [],
-      stepIndex: 0,
-      welcomeStep: {
-        icon: {
-          name: 'fas fa-walking',
-          size: '65px',
-          color: 'primary'
-        },
-        heading: 'Welcome, let\'s get started!',
-        subheading: 'We need to walk through a few steps to collect ' +
-          'information for your credentials.',
-        name: 'Introduction'
-      },
-      reviewStep: {
-        icon: {
-          name: 'fas fa-check-circle',
-          size: '65px',
-          color: 'primary'
-        },
-        heading: 'Does this look okay?',
-        name: 'Review and Submit for Approval'
-      }
+      stepIndex: 0
     };
   },
   computed: {
@@ -117,7 +119,70 @@ export default {
       return this.steps.length - 1;
     },
     steps() {
-      return [this.welcomeStep, ...this.flow, this.reviewStep];
+      const {welcomeStep, reviewStep} = this;
+
+      const steps = [];
+
+      // only add welcome step if available
+      if(welcomeStep !== null) {
+        steps.push(welcomeStep);
+      }
+
+      // add setup steps
+      if(this.setup.length > 0) {
+        steps.push(...this.setup);
+      }
+
+      // add main flow and review
+      steps.push(...this.flow);
+      steps.push(reviewStep);
+      return steps;
+    },
+    reviewStep() {
+      // use given review step
+      if(!this.review) {
+        return this.review;
+      }
+
+      // create default review step
+      return {
+        icon: {
+          name: 'fas fa-check-circle',
+          size: '65px',
+          color: 'primary'
+        },
+        heading: 'Does this look okay?',
+        name: 'Review'
+      };
+    },
+    welcomeStep() {
+      // use given welcome step
+      if(this.welcome !== undefined) {
+        return this.welcome;
+      }
+
+      // create default welcome step
+      const plural = 'credential' + (this.templates.length === 1 ? '' : 's');
+      return {
+        icon: {
+          name: 'fas fa-walking',
+          size: '65px',
+          color: 'primary'
+        },
+        heading: 'Welcome, let\'s get started!',
+        subheading:
+          'We need to walk through a few steps to collect information for ' +
+          `the ${plural}.`,
+        name: 'Introduction'
+      };
+    },
+    isSetupStep() {
+      const {setup, stepIndex} = this;
+      if(setup.length === 0) {
+        return false;
+      }
+      const index = this.welcomeStep ? stepIndex - 1 : stepIndex;
+      return index >= 0 && index < setup.length;
     }
   },
   methods: {
