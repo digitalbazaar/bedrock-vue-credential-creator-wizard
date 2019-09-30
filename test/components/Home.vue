@@ -10,7 +10,14 @@
         :vocab="vocab"
         :schema-map="schemaMap"
         :templates="templates"
-        @finish="finish($event)" />
+        :welcome="welcome"
+        :setup="setup"
+        @finish="finish($event)">
+        <template #setup="{currentStep, stepIndex}">
+          Custom Step {{stepIndex}}
+          <pre>{{currentStep}}</pre>
+        </template>
+      </br-credential-creator-wizard>
     </div>
   </q-page>
 </template>
@@ -28,6 +35,37 @@ export default {
   data() {
     return {
       credentials: [],
+      setup: [{
+        icon: {
+          name: 'fas fa-walking',
+          size: '65px',
+          color: 'primary'
+        },
+        heading: 'Custom Setup Heading 1',
+        subheading: 'Custom setup subheading 1',
+        name: 'Custom Setup Name 1'
+      }, {
+        icon: {
+          name: 'fas fa-walking',
+          size: '65px',
+          color: 'primary'
+        },
+        heading: 'Custom Setup Heading 2',
+        subheading: 'Custom setup subheading 2',
+        name: 'Custom Setup Name 2'
+      }],
+      welcome: {
+        icon: {
+          name: 'fas fa-walking',
+          size: '65px',
+          color: 'primary'
+        },
+        heading: 'Custom welcome, let\'s get started!',
+        subheading:
+          'We need to walk through a few steps to collect information for ' +
+          `the credential.`,
+        name: 'Custom Introduction'
+      },
       flow: [{
         icon: {
           name: 'far fa-list-alt',

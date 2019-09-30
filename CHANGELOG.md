@@ -1,5 +1,10 @@
 # bedrock-vue-credential-creator-wizard ChangeLog
 
+## 1.2.0 - 2019-xx-xx
+
+### Added
+- Add API for custom welcome, review, and setup steps.
+
 ## 1.1.0 - 2019-04-16
 
 ### Updated
