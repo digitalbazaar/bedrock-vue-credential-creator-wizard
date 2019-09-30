@@ -11,27 +11,24 @@
         :image="currentStep.image"
         :icon="currentStep.icon"
         :subheading="currentStep.subheading">
-        <div
-          v-if="isSetupStep"
-          class="q-pb-xl full-width">
-          <slot
-            name="setup"
-            :currentStep="currentStep"
-            :stepIndex="stepIndex" />
-        </div>
-        <div
-          v-else
-          class="q-pb-xl full-width">
+        <div class="q-pb-xl full-width">
           <br-create-credential-review
-            v-if="stepIndex === lastStepIndex"
+            v-if="stepComponent === null && stepIndex === lastStepIndex"
             :credentials="credentials"
             :schema-map="schemaMap" />
-          <form v-if="currentStep.form">
+          <form v-else-if="stepComponent === 'form'">
             <br-q-form-generator
               v-model="currentStep.form.model"
               :vocab="vocab"
               :schema="currentStep.form.schema" />
           </form>
+          <slot
+            v-else-if="stepComponent === 'slot'"
+            :currentStep="currentStep"
+            :stepIndex="stepIndex"
+            :vocab="vocab" />
+          <!-- TODO: support custom components
+            <component :is="stepComponent" /> -->
         </div>
       </br-wizard-step>
     </br-wizard>
@@ -87,6 +84,10 @@ export default {
       default: () => ({}),
       required: true
     },
+    stepComponentMap: {
+      type: Object,
+      default: () => ({})
+    },
     templates: {
       type: Array,
       default: () => [],
@@ -95,10 +96,6 @@ export default {
     welcome: {
       type: Object,
       default: () => undefined
-    },
-    setup: {
-      type: Object,
-      default: () => []
     },
     review: {
       type: Object,
@@ -128,11 +125,6 @@ export default {
         steps.push(welcomeStep);
       }
 
-      // add setup steps
-      if(this.setup.length > 0) {
-        steps.push(...this.setup);
-      }
-
       // add main flow and review
       steps.push(...this.flow);
       steps.push(reviewStep);
@@ -140,7 +132,7 @@ export default {
     },
     reviewStep() {
       // use given review step
-      if(!this.review) {
+      if(this.review) {
         return this.review;
       }
 
@@ -176,13 +168,17 @@ export default {
         name: 'Introduction'
       };
     },
-    isSetupStep() {
-      const {setup, stepIndex} = this;
-      if(setup.length === 0) {
-        return false;
+    stepComponent() {
+      const {currentStep, stepComponentMap} = this;
+      if(currentStep.component) {
+        const component = stepComponentMap[currentStep.component];
+        if(!component) {
+          return 'slot';
+        }
+      } else if(currentStep.form) {
+        return 'form';
       }
-      const index = this.welcomeStep ? stepIndex - 1 : stepIndex;
-      return index >= 0 && index < setup.length;
+      return null;
     }
   },
   methods: {
