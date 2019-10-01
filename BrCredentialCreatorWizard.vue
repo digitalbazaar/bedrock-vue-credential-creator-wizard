@@ -27,8 +27,10 @@
             :currentStep="currentStep"
             :stepIndex="stepIndex"
             :vocab="vocab" />
-          <!-- TODO: support custom components
-            <component :is="stepComponent" /> -->
+          <component
+            :is="stepComponent"
+            v-else
+            v-bind="{currentStep, stepIndex, vocab}" />
         </div>
       </br-wizard-step>
     </br-wizard>
@@ -171,11 +173,9 @@ export default {
     stepComponent() {
       const {currentStep, stepComponentMap} = this;
       if(currentStep.component) {
-        const component = stepComponentMap[currentStep.component];
-        if(!component) {
-          return 'slot';
-        }
-      } else if(currentStep.form) {
+        return stepComponentMap[currentStep.component] || 'slot';
+      }
+      if(currentStep.form) {
         return 'form';
       }
       return null;
