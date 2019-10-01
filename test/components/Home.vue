@@ -11,10 +11,11 @@
         :schema-map="schemaMap"
         :templates="templates"
         :welcome="welcome"
+        :step-component-map="{'br-custom-step': 'br-custom-step'}"
         @finish="finish($event)">
         <template
           #default="{currentStep, stepIndex}">
-          Custom Step {{stepIndex}}
+          Step {{stepIndex}} rendered via slot
           <pre>{{currentStep}}</pre>
         </template>
       </br-credential-creator-wizard>
@@ -28,6 +29,10 @@
 'use strict';
 
 import {BrCredentialCreatorWizard} from 'bedrock-vue-credential-creator-wizard';
+import BrCustomStep from './BrCustomStep.vue';
+
+import Vue from 'vue';
+Vue.component('br-custom-step', BrCustomStep);
 
 export default {
   name: 'Home',
@@ -66,7 +71,7 @@ export default {
         heading: 'Custom Setup Heading 2',
         subheading: 'Custom setup subheading 2',
         name: 'Custom Setup Name 2',
-        component: 'slot'
+        component: 'br-custom-step'
       }, {
         icon: {
           name: 'far fa-list-alt',

@@ -4,6 +4,7 @@
 
 ### Added
 - Add API for custom welcome, review, and slotted steps.
+- Export mixin for creating custom step components.
 
 ## 1.1.0 - 2019-04-16
 
