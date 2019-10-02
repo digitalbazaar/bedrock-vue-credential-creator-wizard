@@ -3,6 +3,9 @@
     <br-wizard
       :current-step-index="stepIndex"
       :total-steps="steps.length"
+      :block-next="blockNext"
+      :block-back="blockBack"
+      :block-finish="blockFinish"
       @next="next($event)"
       @finish="finish($event)"
       @index="stepIndex = $event">
@@ -56,6 +59,18 @@ export default {
     BrQFormGenerator
   },
   props: {
+    blockNext: {
+      type: Boolean,
+      default: false
+    },
+    blockBack: {
+      type: Boolean,
+      default: false
+    },
+    blockFinish: {
+      type: Boolean,
+      default: false
+    },
     value: {
       type: Array,
       default: () => [],
