@@ -197,7 +197,7 @@ export default {
     }
   },
   methods: {
-    next() {
+    next(event) {
       if(this.stepIndex + 1 === this.lastStepIndex) {
         // create credentials for review
         const {flow, issuer, subject, templates} = this;
@@ -207,6 +207,7 @@ export default {
           constants: {subject, issuer}
         });
       }
+      this.$emit('next', event);
     },
     finish() {
       this.$emit('finish', {credentials: this.credentials});
