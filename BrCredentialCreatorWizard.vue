@@ -9,7 +9,7 @@
       @back="back($event)"
       @next="next($event)"
       @finish="finish($event)"
-      @index="stepIndex = $event">
+      @index="index($event)">
       <br-wizard-step
         :heading="currentStep.heading"
         :image="currentStep.image"
@@ -198,6 +198,10 @@ export default {
     }
   },
   methods: {
+    index(event) {
+      this.stepIndex = event;
+      this.$emit('index', event);
+    },
     back(event) {
       this.$emit('back', event);
     },
