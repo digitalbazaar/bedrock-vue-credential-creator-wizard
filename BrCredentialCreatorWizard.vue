@@ -6,6 +6,7 @@
       :block-next="blockNext"
       :block-back="blockBack"
       :block-finish="blockFinish"
+      @back="back($event)"
       @next="next($event)"
       @finish="finish($event)"
       @index="stepIndex = $event">
@@ -197,6 +198,9 @@ export default {
     }
   },
   methods: {
+    back(event) {
+      this.$emit('back', event);
+    },
     next(event) {
       if(this.stepIndex + 1 === this.lastStepIndex) {
         // create credentials for review
